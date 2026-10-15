@@ -1,0 +1,5 @@
+node_modules/
+dist/
+.lingeebuild/
+*.local
+.DS_Store
