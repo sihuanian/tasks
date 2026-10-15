@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 1,
+  "acceptance": [
+    {
+      "id": "AC-01",
+      "source": "requirements.md#AC-01",
+      "surface": "user-interface",
+      "evidenceKinds": [
+        "runtime-render"
+      ],
+      "checkIds": [
+        "QA-01"
+      ]
+    },
+    {
+      "id": "AC-02",
+      "source": "requirements.md#AC-02",
+      "surface": "user-interface",
+      "evidenceKinds": [
+        "interaction"
+      ],
+      "checkIds": [
+        "QA-02"
+      ]
+    },
+    {
+      "id": "AC-03",
+      "source": "requirements.md#AC-03",
+      "surface": "user-interface",
+      "evidenceKinds": [
+        "interaction"
+      ],
+      "checkIds": [
+        "QA-03"
+      ]
+    },
+    {
+      "id": "AC-04",
+      "source": "requirements.md#AC-04",
+      "surface": "user-interface",
+      "evidenceKinds": [
+        "interaction",
+        "visual-style"
+      ],
+      "checkIds": [
+        "QA-03"
+      ]
+    },
+    {
+      "id": "AC-05",
+      "source": "requirements.md#AC-05",
+      "surface": "user-interface",
+      "evidenceKinds": [
+        "interaction",
+        "visual-style"
+      ],
+      "checkIds": [
+        "QA-03"
+      ]
+    },
+    {
+      "id": "AC-06",
+      "source": "requirements.md#AC-06",
+      "surface": "user-interface",
+      "evidenceKinds": [
+        "interaction"
+      ],
+      "checkIds": [
+        "QA-03"
+      ]
+    },
+    {
+      "id": "AC-07",
+      "source": "requirements.md#AC-07",
+      "surface": "user-interface",
+      "evidenceKinds": [
+        "interaction"
+      ],
+      "checkIds": [
+        "QA-03"
+      ]
+    },
+    {
+      "id": "AC-08",
+      "source": "requirements.md#AC-08",
+      "surface": "user-interface",
+      "evidenceKinds": [
+        "interaction",
+        "other"
+      ],
+      "checkIds": [
+        "QA-04"
+      ]
+    },
+    {
+      "id": "AC-09",
+      "source": "requirements.md#AC-09",
+      "surface": "user-interface",
+      "evidenceKinds": [
+        "error-feedback"
+      ],
+      "checkIds": [
+        "QA-05"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "checkId": "QA-01",
+      "type": "browser-ui",
+      "plan": [
+        {
+          "requirementId": "AC-01",
+          "kind": "runtime-render",
+          "action": "打开页面并观察绘图区域。",
+          "expected": "页面显示一块绘图区域，且未出现错误提示。"
+        }
+      ]
+    },
+    {
+      "checkId": "QA-02",
+      "type": "browser-ui",
+      "plan": [
+        {
+          "requirementId": "AC-02",
+          "kind": "interaction",
+          "action": "点击生成笑脸并观察画布。",
+          "expected": "画布上出现一个完整的笑脸图案，可辨认出轮廓、两眼与微笑嘴部。"
+        }
+      ]
+    },
+    {
+      "checkId": "QA-03",
+      "type": "browser-ui",
+      "plan": [
+        {
+          "requirementId": "AC-03",
+          "kind": "interaction",
+          "action": "在画布上按住并拖动指针后松开，观察画布。",
+          "expected": "画布上出现与拖动轨迹一致的连续线条，无明显断点。"
+        },
+        {
+          "requirementId": "AC-04",
+          "kind": "interaction",
+          "action": "切换颜色后绘制一笔，观察新笔迹颜色。",
+          "expected": "新笔迹颜色与新选择的颜色一致，已有笔迹颜色不变。"
+        },
+        {
+          "requirementId": "AC-04",
+          "kind": "visual-style",
+          "action": "切换颜色后绘制一笔，观察新笔迹颜色。",
+          "expected": "新笔迹颜色与新选择的颜色一致，已有笔迹颜色不变。"
+        },
+        {
+          "requirementId": "AC-05",
+          "kind": "interaction",
+          "action": "切换粗细后绘制一笔，比较新笔迹与旧笔迹的宽度。",
+          "expected": "新笔迹宽度与新选择的粗细一致，已有笔迹宽度不变。"
+        },
+        {
+          "requirementId": "AC-05",
+          "kind": "visual-style",
+          "action": "切换粗细后绘制一笔，比较新笔迹与旧笔迹的宽度。",
+          "expected": "新笔迹宽度与新选择的粗细一致，已有笔迹宽度不变。"
+        },
+        {
+          "requirementId": "AC-06",
+          "kind": "interaction",
+          "action": "先绘制一笔，再点击撤销，观察画布。",
+          "expected": "最近一笔笔迹被移除，之前的内容仍然保留。"
+        },
+        {
+          "requirementId": "AC-07",
+          "kind": "interaction",
+          "action": "绘制或生成内容后点击清空，观察画布。",
+          "expected": "画布上原有内容全部消失，画布为空白。"
+        }
+      ]
+    },
+    {
+      "checkId": "QA-04",
+      "type": "browser-ui",
+      "plan": [
+        {
+          "requirementId": "AC-08",
+          "kind": "interaction",
+          "action": "点击导出并打开下载得到的图片文件。",
+          "expected": "下载得到 PNG 格式文件，图片内容与画布上的内容一致。"
+        },
+        {
+          "requirementId": "AC-08",
+          "kind": "other",
+          "action": "点击导出并打开下载得到的图片文件。",
+          "expected": "下载得到 PNG 格式文件，图片内容与画布上的内容一致。"
+        }
+      ]
+    },
+    {
+      "checkId": "QA-05",
+      "type": "browser-ui",
+      "plan": [
+        {
+          "requirementId": "AC-09",
+          "kind": "error-feedback",
+          "action": "在空白画布上点击撤销，观察画布与页面状态。",
+          "expected": "画布保持空白，页面未出现错误提示或异常中断。"
+        }
+      ]
+    }
+  ]
+}

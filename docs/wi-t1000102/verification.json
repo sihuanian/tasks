@@ -1,0 +1,396 @@
+{
+  "decision": "pass-with-risk",
+  "summary": {
+    "objective": "在真实桌面浏览器中独立验证「画一个笑脸」单页绘图工具的已批准验收行为",
+    "changedBehavior": "新建 Vite + React 单页绘图工具：打开页面显示可绘制画布、一键生成标准笑脸、指针自由绘制连续笔迹、切换笔触颜色与粗细、撤销与清空、导出 PNG 图片",
+    "nonGoals": [],
+    "riskLabels": []
+  },
+  "environment": {
+    "name": "本地 Vite 开发服务器 + 真实浏览器（agent_browser，Chromium 内核）桌面视口",
+    "version": "Vite 8 / React 19 / TypeScript 5 / Vitest 5",
+    "dataProfile": "无账号、无服务端、无持久化；画布内容与操作历史仅存于浏览器页面内存，导出文件保存到本机下载目录"
+  },
+  "verification": [
+    {
+      "checkId": "QA-01",
+      "type": "browser-ui",
+      "status": "passed",
+      "plan": [
+        {
+          "requirementId": "AC-01",
+          "kind": "runtime-render",
+          "action": "打开页面并观察绘图区域。",
+          "expected": "页面显示一块绘图区域，且未出现错误提示。"
+        }
+      ],
+      "evidence": "在浏览器打开 http://127.0.0.1:5174/ 后，页面存在 canvas 元素（内部 1024×1024、显示 640×640，视口 1280×800），画布像素全部为白色背景（暗色像素 0），状态栏显示「画布为空白」，控制台错误列表为空。",
+      "observation": {
+        "method": "browser",
+        "actor": "expert",
+        "reference": "浏览器记录 #1：打开页面后的像素扫描与状态栏读取"
+      },
+      "assertions": [
+        {
+          "requirementId": "AC-01",
+          "kind": "runtime-render",
+          "action": "打开页面并观察绘图区域。",
+          "expected": "页面显示一块绘图区域，且未出现错误提示。",
+          "actual": "页面渲染出可绘制画布（1024×1024 内部尺寸，显示 640×640 且 1:1 自适应），状态栏显示「画布为空白」，无错误提示与控制台错误。",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "checkId": "QA-02",
+      "type": "browser-ui",
+      "status": "passed",
+      "plan": [
+        {
+          "requirementId": "AC-02",
+          "kind": "interaction",
+          "action": "点击生成笑脸并观察画布。",
+          "expected": "画布上出现一个完整的笑脸图案，可辨认出轮廓、两眼与微笑嘴部。"
+        }
+      ],
+      "evidence": "点击「生成笑脸」后画布出现完整笑脸：轮廓圆四点(512,164)/(512,860)/(164,512)/(860,512)、左眼环顶(380,369)、右眼环顶(644,369)、嘴部弧最低点(512,721) 均为深色 #111827；脸内(512,512)、两眼之间(512,407)、上半圆(512,317) 均为白色；暗色像素 21327，外接框 [160,160,863,863]；状态栏显示「已生成笑脸，可继续绘制或导出图片」。",
+      "observation": {
+        "method": "browser",
+        "actor": "expert",
+        "reference": "浏览器记录 #2：点击生成笑脸后的定点像素采样与整体像素统计"
+      },
+      "assertions": [
+        {
+          "requirementId": "AC-02",
+          "kind": "interaction",
+          "action": "点击生成笑脸并观察画布。",
+          "expected": "画布上出现一个完整的笑脸图案，可辨认出轮廓、两眼与微笑嘴部。",
+          "actual": "画布出现可辨认的标准笑脸：脸部轮廓圆、左右两只眼睛圆环与位于下半圆（向上弯曲）的嘴部弧线均存在，内部区域为空白，状态栏提示已生成笑脸。",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "checkId": "QA-03",
+      "type": "browser-ui",
+      "status": "passed",
+      "plan": [
+        {
+          "requirementId": "AC-03",
+          "kind": "interaction",
+          "action": "在画布上按住并拖动指针后松开，观察画布。",
+          "expected": "画布上出现与拖动轨迹一致的连续线条，无明显断点。"
+        },
+        {
+          "requirementId": "AC-04",
+          "kind": "interaction",
+          "action": "切换颜色后绘制一笔，观察新笔迹颜色。",
+          "expected": "新笔迹颜色与新选择的颜色一致，已有笔迹颜色不变。"
+        },
+        {
+          "requirementId": "AC-04",
+          "kind": "visual-style",
+          "action": "切换颜色后绘制一笔，观察新笔迹颜色。",
+          "expected": "新笔迹颜色与新选择的颜色一致，已有笔迹颜色不变。"
+        },
+        {
+          "requirementId": "AC-05",
+          "kind": "interaction",
+          "action": "切换粗细后绘制一笔，比较新笔迹与旧笔迹的宽度。",
+          "expected": "新笔迹宽度与新选择的粗细一致，已有笔迹宽度不变。"
+        },
+        {
+          "requirementId": "AC-05",
+          "kind": "visual-style",
+          "action": "切换粗细后绘制一笔，比较新笔迹与旧笔迹的宽度。",
+          "expected": "新笔迹宽度与新选择的粗细一致，已有笔迹宽度不变。"
+        },
+        {
+          "requirementId": "AC-06",
+          "kind": "interaction",
+          "action": "先绘制一笔，再点击撤销，观察画布。",
+          "expected": "最近一笔笔迹被移除，之前的内容仍然保留。"
+        },
+        {
+          "requirementId": "AC-07",
+          "kind": "interaction",
+          "action": "绘制或生成内容后点击清空，观察画布。",
+          "expected": "画布上原有内容全部消失，画布为空白。"
+        }
+      ],
+      "evidence": "在画布上按住指针拖动完成自由绘制、颜色切换、粗细切换、撤销与清空，并逐行扫描像素核对结果（详见各断言）。",
+      "observation": {
+        "method": "browser",
+        "actor": "expert",
+        "reference": "浏览器记录 #3–#8：拖动绘制、颜色/粗细切换、撤销、清空的逐行像素扫描"
+      },
+      "assertions": [
+        {
+          "requirementId": "AC-03",
+          "kind": "interaction",
+          "action": "在画布上按住并拖动指针后松开，观察画布。",
+          "expected": "画布上出现与拖动轨迹一致的连续线条，无明显断点。",
+          "actual": "按住指针在画布拖动绘制一笔（内部 x=150，y 200→600，黑色中档）：得到连续竖线，暗色外接框 [148,197,154,602]，第 250/400/550 行均扫描到单条 [148,154] 笔迹且颜色均值 (51,57,70)，无断点；指针移出画布（内部 x≈1150）再移回后，在离开点与返回点之间的第 360 行扫描无墨迹，未产生跳跃直线，返回后从返回点继续绘制。",
+          "status": "passed"
+        },
+        {
+          "requirementId": "AC-04",
+          "kind": "interaction",
+          "action": "切换颜色后绘制一笔，观察新笔迹颜色。",
+          "expected": "新笔迹颜色与新选择的颜色一致，已有笔迹颜色不变。",
+          "actual": "选择「红色」后绘制一笔（内部 x=800）：第 250/370/500/550/600 行扫描该笔迹颜色均值约 (241,95,95)，与所选 #ef4444 一致。",
+          "status": "passed"
+        },
+        {
+          "requirementId": "AC-04",
+          "kind": "visual-style",
+          "action": "切换颜色后绘制一笔，观察新笔迹颜色。",
+          "expected": "新笔迹颜色与新选择的颜色一致，已有笔迹颜色不变。",
+          "actual": "切换颜色前后，已有黑色笔迹（第 550 行 [148,154]，均值 (51,57,70)）与蓝色笔迹（[597,603]，均值 (68,121,238)）的行扫描颜色与位置均未变化，只有新笔迹使用新颜色。",
+          "status": "passed"
+        },
+        {
+          "requirementId": "AC-05",
+          "kind": "interaction",
+          "action": "切换粗细后绘制一笔，比较新笔迹与旧笔迹的宽度。",
+          "expected": "新笔迹宽度与新选择的粗细一致，已有笔迹宽度不变。",
+          "actual": "选择「粗」(线宽 12) 后在内部 x≈900 绘制一笔：第 440/500/550/600 行扫描该笔迹宽度为 13 像素（含抗锯齿），而细/中档笔迹宽度为 7 像素（内部线宽 6）；同时「粗」按钮 aria-pressed=true、「中」按钮 aria-pressed=false。",
+          "status": "passed"
+        },
+        {
+          "requirementId": "AC-05",
+          "kind": "visual-style",
+          "action": "切换粗细后绘制一笔，比较新笔迹与旧笔迹的宽度。",
+          "expected": "新笔迹宽度与新选择的粗细一致，已有笔迹宽度不变。",
+          "actual": "绘制粗笔迹后，已有中档笔迹行扫描宽度保持 7 像素（第 500 行 [148,154]、[597,614]、[797,803]），仅新笔迹为 13 像素，已有笔迹宽度未回改。",
+          "status": "passed"
+        },
+        {
+          "requirementId": "AC-06",
+          "kind": "interaction",
+          "action": "先绘制一笔，再点击撤销，观察画布。",
+          "expected": "最近一笔笔迹被移除，之前的内容仍然保留。",
+          "actual": "画布已有多笔内容时点击「撤销」：最近一笔（内部 x≈900 的粗红笔迹，原第 500 行 [895,907]）消失，之前的黑色 [148,154]、蓝色 [597,614]、红色 [797,803] 三笔仍在，状态栏显示「已撤销最近一次操作」。",
+          "status": "passed"
+        },
+        {
+          "requirementId": "AC-07",
+          "kind": "interaction",
+          "action": "绘制或生成内容后点击清空，观察画布。",
+          "expected": "画布上原有内容全部消失，画布为空白。",
+          "actual": "画布已有内容（生成笑脸，暗色像素 21327）时点击「清空」：第 512 行扫描无任何墨迹、暗色像素降为 0，状态栏显示「已清空画布」；随后点击「撤销」可恢复到清空前内容（暗色像素回到 21327、外接框 [160,160,863,863]）。",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "checkId": "QA-04",
+      "type": "browser-ui",
+      "status": "passed",
+      "plan": [
+        {
+          "requirementId": "AC-08",
+          "kind": "interaction",
+          "action": "点击导出并打开下载得到的图片文件。",
+          "expected": "下载得到 PNG 格式文件，图片内容与画布上的内容一致。"
+        },
+        {
+          "requirementId": "AC-08",
+          "kind": "other",
+          "action": "点击导出并打开下载得到的图片文件。",
+          "expected": "下载得到 PNG 格式文件，图片内容与画布上的内容一致。"
+        }
+      ],
+      "evidence": "点击「导出图片」后状态栏显示「已导出 PNG 图片」且无控制台错误；对同一画布取 PNG 编码并解码复核，PNG 签名 89 50 4e 47 0d 0a 1a 0a、1024×1024、颜色类型 6(RGBA)、24913 字节，解码像素与画布逐像素比较 diff=0、墨迹像素数 2438 与画布一致，抽样笔迹像素均为 (37,99,235)。落盘文件因桌面预览浏览器取消下载对话框而未能直接观察。",
+      "observation": {
+        "method": "browser",
+        "actor": "expert",
+        "reference": "浏览器记录 #9–#10：导出动作后的状态栏读取与 PNG 解码逐像素比对"
+      },
+      "assertions": [
+        {
+          "requirementId": "AC-08",
+          "kind": "interaction",
+          "action": "点击导出并打开下载得到的图片文件。",
+          "expected": "下载得到 PNG 格式文件，图片内容与画布上的内容一致。",
+          "actual": "点击「导出图片」后导出流程无异常完成，状态栏显示「已导出 PNG 图片」；由于环境会取消下载对话框，本机下载目录中的文件未能观察。",
+          "status": "passed"
+        },
+        {
+          "requirementId": "AC-08",
+          "kind": "other",
+          "action": "点击导出并打开下载得到的图片文件。",
+          "expected": "下载得到 PNG 格式文件，图片内容与画布上的内容一致。",
+          "actual": "导出所用同一画布生成的 PNG 为合法 PNG（1024×1024、RGBA），解码后与画布像素逐像素差异为 0，内容与导出时刻画布一致。",
+          "status": "passed"
+        }
+      ]
+    },
+    {
+      "checkId": "QA-05",
+      "type": "browser-ui",
+      "status": "passed",
+      "plan": [
+        {
+          "requirementId": "AC-09",
+          "kind": "error-feedback",
+          "action": "在空白画布上点击撤销，观察画布与页面状态。",
+          "expected": "画布保持空白，页面未出现错误提示或异常中断。"
+        }
+      ],
+      "evidence": "在刚打开、画布为空白的状态下连续点击「撤销」4 次：画布暗色像素始终为 0、第 512 行扫描无墨迹，状态栏保持「画布为空白」，控制台错误列表为空。",
+      "observation": {
+        "method": "browser",
+        "actor": "expert",
+        "reference": "浏览器记录 #11：空白画布上多次撤销后的像素扫描、状态栏与控制台错误读取"
+      },
+      "assertions": [
+        {
+          "requirementId": "AC-09",
+          "kind": "error-feedback",
+          "action": "在空白画布上点击撤销，观察画布与页面状态。",
+          "expected": "画布保持空白，页面未出现错误提示或异常中断。",
+          "actual": "空白画布上连续点击撤销 4 次，画布保持空白（暗色像素 0），页面未出现错误提示或异常中断，控制台无错误。",
+          "status": "passed"
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "acceptance": "AC-01: 页面加载完成后，页面中显示一块可绘制的绘图区。; AC-02: 触发「生成笑脸」后，画布上出现由脸部轮廓、两只眼睛和向上弯曲的嘴部线条组成的笑脸图案。; AC-03: 按住指针在画布上移动时，画布实时显示跟随指针轨迹的连续笔迹。; AC-04: 选择笔触颜色后，后续绘制的笔迹使用所选颜色。; AC-05: 调整笔触粗细后，后续绘制的笔迹粗细随之变化。; AC-06: 触发撤销后，最近一次绘制操作从画布上消失，其余内容保留。; AC-07: 触发「清空」后，画布上的全部内容被移除，画布变为空白。; AC-08: 触发「导出图片」后，浏览器下载一张与当前画布内容一致的 PNG 图片。; AC-09: 画布为空或已无历史操作时执行撤销，画布保持空白且页面不出现错误提示。",
+    "mandatoryAcceptance": [
+      {
+        "id": "AC-01",
+        "source": "requirements.md#AC-01",
+        "surface": "user-interface",
+        "status": "met",
+        "checkIds": [
+          "QA-01"
+        ],
+        "evidenceKinds": [
+          "runtime-render"
+        ],
+        "evidence": "QA-01：页面加载后显示可绘制画布（内部 1024×1024、显示 640×640），状态栏「画布为空白」，无控制台错误。"
+      },
+      {
+        "id": "AC-02",
+        "source": "requirements.md#AC-02",
+        "surface": "user-interface",
+        "status": "met",
+        "checkIds": [
+          "QA-02"
+        ],
+        "evidenceKinds": [
+          "interaction"
+        ],
+        "evidence": "QA-02：点击生成笑脸后轮廓、两眼与微笑嘴部采样点均为深色，脸内与上半圆为空白，构成完整可辨认笑脸。"
+      },
+      {
+        "id": "AC-03",
+        "source": "requirements.md#AC-03",
+        "surface": "user-interface",
+        "status": "met",
+        "checkIds": [
+          "QA-03"
+        ],
+        "evidenceKinds": [
+          "interaction"
+        ],
+        "evidence": "QA-03：拖动绘制得到连续无断点笔迹（多行扫描一致）；指针离开画布不产生笔迹、返回后另起一段，无跳跃直线。"
+      },
+      {
+        "id": "AC-04",
+        "source": "requirements.md#AC-04",
+        "surface": "user-interface",
+        "status": "met",
+        "checkIds": [
+          "QA-03"
+        ],
+        "evidenceKinds": [
+          "interaction",
+          "visual-style"
+        ],
+        "evidence": "QA-03：选红色后新笔迹为 #ef4444（扫描均值 241,95,95），已有黑/蓝笔迹颜色与位置不变。"
+      },
+      {
+        "id": "AC-05",
+        "source": "requirements.md#AC-05",
+        "surface": "user-interface",
+        "status": "met",
+        "checkIds": [
+          "QA-03"
+        ],
+        "evidenceKinds": [
+          "interaction",
+          "visual-style"
+        ],
+        "evidence": "QA-03：选「粗」后新笔迹宽 13 像素、中档笔迹宽 7 像素，已有笔迹宽度不变。"
+      },
+      {
+        "id": "AC-06",
+        "source": "requirements.md#AC-06",
+        "surface": "user-interface",
+        "status": "met",
+        "checkIds": [
+          "QA-03"
+        ],
+        "evidenceKinds": [
+          "interaction"
+        ],
+        "evidence": "QA-03：撤销移除最近一笔，之前绘制的三笔仍保留。"
+      },
+      {
+        "id": "AC-07",
+        "source": "requirements.md#AC-07",
+        "surface": "user-interface",
+        "status": "met",
+        "checkIds": [
+          "QA-03"
+        ],
+        "evidenceKinds": [
+          "interaction"
+        ],
+        "evidence": "QA-03：清空后画布无任何墨迹，且可通过撤销恢复清空前内容。"
+      },
+      {
+        "id": "AC-08",
+        "source": "requirements.md#AC-08",
+        "surface": "user-interface",
+        "status": "met",
+        "checkIds": [
+          "QA-04"
+        ],
+        "evidenceKinds": [
+          "interaction",
+          "other"
+        ],
+        "evidence": "QA-04：导出动作成功完成（状态栏「已导出 PNG 图片」），导出的 PNG 为合法 1024×1024 RGBA 且与画布逐像素一致；落盘文件因环境取消下载未能直接观察（见剩余风险）。"
+      },
+      {
+        "id": "AC-09",
+        "source": "requirements.md#AC-09",
+        "surface": "user-interface",
+        "status": "met",
+        "checkIds": [
+          "QA-05"
+        ],
+        "evidenceKinds": [
+          "error-feedback"
+        ],
+        "evidence": "QA-05：空白画布上连续撤销 4 次，画布保持空白且无错误提示与控制台错误。"
+      }
+    ],
+    "riskLabels": [],
+    "verificationTypes": [
+      "browser-ui"
+    ]
+  },
+  "defects": [],
+  "skippedChecks": [],
+  "residualRisks": [
+    "AC-08：桌面预览浏览器会取消下载对话框，导出 PNG 已通过同一画布的编码解码逐像素比对间接验证（diff=0），但文件实际落盘到本机下载目录的步骤未能直接观察。",
+    "在 1280×800 桌面视口下页面总高 887 像素大于视口 800 像素，画布底部约 11 像素需滚动才完全可见；需求第 4 节「桌面可用性」为推荐基线且未列入冻结验收项，故记为剩余风险。",
+    "一次工具发起的下载动作过程中，浏览器交互层曾在画布上产生非预期红色笔迹；随后受控复核确认仅悬停移动（无按键）不会产生任何笔迹，画布加载后长时间无输入也保持空白，故判定为工具指针伪影而非应用缺陷，相关结论已在受控流程下重新取证。"
+  ],
+  "baselineUpdates": []
+}
