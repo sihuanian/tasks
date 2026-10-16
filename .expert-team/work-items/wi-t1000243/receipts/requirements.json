@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 2,
+  "receiptId": "requirements:1",
+  "receiptType": "requirements-baseline",
+  "specId": "general-application-development-spec",
+  "graphRevision": 5,
+  "actionId": "requirements",
+  "inputRevision": 0,
+  "stateVersion": 1,
+  "outcome": "passed",
+  "contentHash": "sha256:35369696e51be724a4aeacbb8306a0d7c7087478439a34b656f7eeb483c8844f",
+  "createdAt": "2026-10-16T06:05:38.710Z",
+  "timing": {
+    "startedAt": "2026-10-16T06:04:57.538Z",
+    "completedAt": "2026-10-16T06:05:38.710Z",
+    "durationMs": 41172
+  },
+  "artifacts": [
+    {
+      "path": "docs/wi-t1000243/requirements.md",
+      "bytes": 4031,
+      "sha256": "sha256:9e683ec7a20f3234b56190acb119c34f1accdd6706bd41369b5b44c562095253",
+      "title": "需求文档：爱心展示 HTML 页面"
+    }
+  ],
+  "verification": [
+    {
+      "checkId": "requirements:completion",
+      "status": "passed"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "workItemId": "wi-t1000243",
+  "applicationId": "application",
+  "workItemType": "initial-build",
+  "title": "创建一个HTML页面，显示一个爱心",
+  "request": "创建一个HTML页面，显示一个爱心",
+  "status": "active",
+  "specId": "general-application-development-spec",
+  "revision": 0,
+  "createdAt": "2026-10-16T06:04:57.445Z"
+}
