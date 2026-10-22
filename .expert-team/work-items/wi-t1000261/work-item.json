@@ -1,0 +1,11 @@
+{
+  "workItemId": "wi-t1000261",
+  "applicationId": "application",
+  "workItemType": "initial-build",
+  "title": "画一颗星星，3D效果和动效（仅执行 requirements 需求分析阶段）",
+  "request": "画一颗星星，3D效果和动效（仅执行 requirements 需求分析阶段）",
+  "status": "active",
+  "specId": "general-application-development-spec",
+  "revision": 0,
+  "createdAt": "2026-10-16T08:55:34.442Z"
+}

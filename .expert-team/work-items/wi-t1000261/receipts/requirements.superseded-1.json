@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 2,
+  "receiptId": "requirements:1",
+  "receiptType": "requirements-baseline",
+  "specId": "general-application-development-spec",
+  "graphRevision": 5,
+  "actionId": "requirements",
+  "inputRevision": 0,
+  "stateVersion": 1,
+  "outcome": "passed",
+  "contentHash": "sha256:04b859d6b12c00d95fd4c66ec9682917447d8c1043b68f0b3cec8ed107f29708",
+  "createdAt": "2026-10-16T09:05:23.141Z",
+  "timing": {
+    "startedAt": "2026-10-16T08:55:34.533Z",
+    "completedAt": "2026-10-16T09:05:23.141Z",
+    "durationMs": 588608
+  },
+  "artifacts": [
+    {
+      "path": "docs/wi-t1000261/requirements.md",
+      "bytes": 9405,
+      "sha256": "sha256:ad7601c7809beaee345fe5446baead35e1e309210992deb1114d23c6b9b75cfb",
+      "title": "需求文档：3D 星星动效页面"
+    }
+  ],
+  "verification": [
+    {
+      "checkId": "requirements:completion",
+      "status": "passed"
+    }
+  ]
+}
