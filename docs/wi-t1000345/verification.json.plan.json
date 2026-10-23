@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "acceptance": [
+    {
+      "id": "AC-01",
+      "source": "requirements.md#AC-01",
+      "surface": "user-interface",
+      "evidenceKinds": [
+        "runtime-render",
+        "visual-style"
+      ],
+      "checkIds": [
+        "QA-01"
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "checkId": "QA-01",
+      "type": "browser-ui",
+      "plan": [
+        {
+          "requirementId": "AC-01",
+          "kind": "runtime-render",
+          "action": "在操作系统中双击成果文件（图片查看器打开），或在浏览器中通过\"打开文件\"加载该文件；观察渲染出的图形。",
+          "expected": "查看器/浏览器成功渲染图形；肉眼可确认画面为一朵向日葵，并能分别辨认出花瓣、花盘（管状花区域）、茎、叶片；无损坏提示或空白页。"
+        },
+        {
+          "requirementId": "AC-01",
+          "kind": "visual-style",
+          "action": "在操作系统中双击成果文件（图片查看器打开），或在浏览器中通过\"打开文件\"加载该文件；观察渲染出的图形。",
+          "expected": "查看器/浏览器成功渲染图形；肉眼可确认画面为一朵向日葵，并能分别辨认出花瓣、花盘（管状花区域）、茎、叶片；无损坏提示或空白页。"
+        }
+      ]
+    }
+  ]
+}

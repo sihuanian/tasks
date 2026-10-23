@@ -1,0 +1,96 @@
+{
+  "decision": "pass-with-risk",
+  "summary": {
+    "objective": "独立验收 AC-01：打开单文件向日葵成果 docs/wi-t1000345/sunflower.svg 可直接呈现一朵完整向日葵，花瓣、花盘（管状花）、茎、叶片四类要素清晰可辨，无报错、无空白",
+    "changedBehavior": "实现阶段新增的静态 SVG 单文件交付物（22,435 字节，sha256:06af181e…c889），无既有行为变更",
+    "nonGoals": [
+      "多株/场景化绘制",
+      "PNG 正式派生输出（架构基线排除）",
+      "页面、交互、服务器与业务集成（需求明确排除）"
+    ],
+    "riskLabels": [
+      "static-single-file",
+      "browser-tool-limitation"
+    ]
+  },
+  "environment": {
+    "name": "macOS（darwin）本机 QA 验收：内嵌 Chromium 预览浏览器（同源实测通道）+ 系统图片渲染查看器（QuickLook，与 Finder 双击同一路径）",
+    "version": "交付物 sunflower.svg 22,435 字节（sha256:06af181ecae7931614141a7f7fb0298848dc8d9b094929fa925515271ec4c889）",
+    "dataProfile": "唯一测试数据为被验收的单文件 SVG 成果本身；临时静态服务与同源测量夹具仅承载/观测同一文件，无任何外部资源或持久化状态"
+  },
+  "verification": [
+    {
+      "checkId": "QA-01",
+      "type": "browser-ui",
+      "status": "passed",
+      "plan": [
+        {
+          "requirementId": "AC-01",
+          "kind": "runtime-render",
+          "action": "在操作系统中双击成果文件（图片查看器打开），或在浏览器中通过\"打开文件\"加载该文件；观察渲染出的图形。",
+          "expected": "查看器/浏览器成功渲染图形；肉眼可确认画面为一朵向日葵，并能分别辨认出花瓣、花盘（管状花区域）、茎、叶片；无损坏提示或空白页。"
+        },
+        {
+          "requirementId": "AC-01",
+          "kind": "visual-style",
+          "action": "在操作系统中双击成果文件（图片查看器打开），或在浏览器中通过\"打开文件\"加载该文件；观察渲染出的图形。",
+          "expected": "查看器/浏览器成功渲染图形；肉眼可确认画面为一朵向日葵，并能分别辨认出花瓣、花盘（管状花区域）、茎、叶片；无损坏提示或空白页。"
+        }
+      ],
+      "evidence": "浏览器直接观测：预览浏览器独立 HTTP 加载交付文件（文档标题解析为『向日葵』），并经同源通道实测 SVG 真实渲染几何——画布 640x860（display:block/visibility:visible）、40 片花瓣（url(#gPetal*) 渐变填充，单片 25x130px）、花盘圆盘 156x156px 水平居中（discFill=url(#gDisc) 渐变生效）、茎描边 rgb(69,117,35) 实际尺寸 8x501px、2 片叶（约 187x87 / 189x87px），四类要素均有非零渲染尺寸；系统图片查看器路径（QuickLook=双击同渲染路径）独立栅格化 900x900 PNG，视觉模型逐项判读单朵完整向日葵、四类要素清晰可辨、无空白/撕裂/错位；程序化补充：xmllint 退出码 0（良构可解析），href/src 网络 URL 0 处、xlink:href/<image>/url(http) 0 处命中（单文件自包含、独立打开无外部依赖）。",
+      "observation": {
+        "method": "browser",
+        "actor": "expert",
+        "reference": "预览浏览器记录：targetId lingee-preview-10-43277ef3dcc8d733，http://127.0.0.1:8791/sunflower.svg 文档加载（title 向日葵）+ 同源通道两次 eval 实测值（svgRect 640x860、petalCount=40、disc 156x156 居中、stemStroke rgb(69,117,35) 8x501、leafCount=2）+ QA 目检图 docs/wi-t1000345/tmp/qa/sunflower.svg.png（本轮 qlmanage 新生成）"
+      },
+      "assertions": [
+        {
+          "requirementId": "AC-01",
+          "kind": "runtime-render",
+          "action": "在操作系统中双击成果文件（图片查看器打开），或在浏览器中通过\"打开文件\"加载该文件；观察渲染出的图形。",
+          "expected": "查看器/浏览器成功渲染图形；肉眼可确认画面为一朵向日葵，并能分别辨认出花瓣、花盘（管状花区域）、茎、叶片；无损坏提示或空白页。",
+          "actual": "渲染成功、无空白无报错：浏览器加载交付 SVG 文档并实测画布 640x860、四类要素几何均大于零；系统图片查看器路径输出 900x900 PNG 呈现一朵完整向日葵，视觉判读无损坏提示或空白",
+          "status": "passed"
+        },
+        {
+          "requirementId": "AC-01",
+          "kind": "visual-style",
+          "action": "在操作系统中双击成果文件（图片查看器打开），或在浏览器中通过\"打开文件\"加载该文件；观察渲染出的图形。",
+          "expected": "查看器/浏览器成功渲染图形；肉眼可确认画面为一朵向日葵，并能分别辨认出花瓣、花盘（管状花区域）、茎、叶片；无损坏提示或空白页。",
+          "actual": "浏览器 getComputedStyle/getBoundingClientRect 实测：金黄渐变花瓣 40 片（单片 25x130px 放射）、棕色径向渐变花盘 156x156px 居中（内 111 个圆点含螺旋籽阵与环状小花）、绿茎 8x501px 向下延伸、左右 2 片绿叶约 187x87px；系统查看器渲染图视觉模型逐项确认四类要素可分别辨认且无错位/缺失",
+          "status": "passed"
+        }
+      ]
+    }
+  ],
+  "coverage": {
+    "acceptance": "AC-01: 存在一个单文件向日葵绘制成果；在浏览器或图片查看器中直接打开后，呈现一朵完整的向日葵，花瓣、花盘（管状花）、茎、叶片四类基本要素均清晰可辨；打开过程无报错、无空白内容。",
+    "mandatoryAcceptance": [
+      {
+        "id": "AC-01",
+        "source": "requirements.md#AC-01",
+        "surface": "user-interface",
+        "status": "met",
+        "checkIds": [
+          "QA-01"
+        ],
+        "evidenceKinds": [
+          "runtime-render",
+          "visual-style"
+        ],
+        "evidence": "QA-01 passed：浏览器通道实测交付文件独立加载渲染、四类要素均有真实几何；双击等同路径（系统图片查看器）渲染图视觉判读一朵完整向日葵、花瓣/花盘（管状花）/茎/叶片清晰可辨，无报错无空白；文件自包含性经程序化验证"
+      }
+    ],
+    "riskLabels": [],
+    "verificationTypes": [
+      "browser-ui"
+    ]
+  },
+  "defects": [],
+  "skippedChecks": [],
+  "residualRisks": [
+    "预览浏览器自动化工具对顶层 SVG 文档页面无法直接执行内容断言（snapshot/eval 持续 readiness 失败、截图超时，已按止损规则停止）；内容级浏览器证据经同一浏览器进程的同源通道实测与单文档加载记录取得，浏览器窗口整页像素截图未采集",
+    "验收在 macOS 系统渲染路径与 Chromium 上执行；其他操作系统图片查看器（如 Windows 默认查看器）对本 SVG 的兼容性未在本轮覆盖"
+  ],
+  "baselineUpdates": []
+}
