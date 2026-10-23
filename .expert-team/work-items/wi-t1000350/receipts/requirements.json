@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 2,
+  "receiptId": "requirements:1",
+  "receiptType": "requirements-baseline",
+  "specId": "general-application-development-spec",
+  "graphRevision": 5,
+  "actionId": "requirements",
+  "inputRevision": 0,
+  "stateVersion": 1,
+  "outcome": "passed",
+  "contentHash": "sha256:60be69a8610663b5beca2750b3d9b858abe3593227f67de83b84cc4d149551c0",
+  "createdAt": "2026-10-23T05:38:46.259Z",
+  "timing": {
+    "startedAt": "2026-10-23T05:37:59.299Z",
+    "completedAt": "2026-10-23T05:38:46.259Z",
+    "durationMs": 46960
+  },
+  "artifacts": [
+    {
+      "path": "docs/wi-t1000350/requirements.md",
+      "bytes": 1864,
+      "sha256": "sha256:3223f530e0fb41470981df221d814189e7bf75ad8145fda67fa0257bf8e12fff",
+      "role": "requirements-document",
+      "purpose": "requirements 阶段交付物：画一朵菊花的需求定义与验收标准",
+      "title": "需求：画一朵菊花"
+    }
+  ],
+  "verification": [
+    {
+      "checkId": "requirements-self-review",
+      "status": "passed"
+    }
+  ]
+}
