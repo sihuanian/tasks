@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 2,
+  "receiptId": "requirements:1",
+  "receiptType": "requirements-baseline",
+  "specId": "general-application-development-spec",
+  "graphRevision": 5,
+  "actionId": "requirements",
+  "inputRevision": 0,
+  "stateVersion": 1,
+  "outcome": "passed",
+  "contentHash": "sha256:956fcf541f96c76a3190b3a2f42c00dd3c20f551bf06bda289ba1631faab4001",
+  "createdAt": "2026-10-23T07:36:37.410Z",
+  "timing": {
+    "startedAt": "2026-10-23T07:36:07.706Z",
+    "completedAt": "2026-10-23T07:36:37.410Z",
+    "durationMs": 29704
+  },
+  "artifacts": [
+    {
+      "path": "docs/wi-t1000360/requirements.md",
+      "bytes": 2524,
+      "sha256": "sha256:dcb6df7410aa52fc7f94fc43fa54a3edaaadff4c2e3860f2ce31e8e44a712abf",
+      "role": "requirements",
+      "purpose": "需求基线文档：目标、核心行为与规则、AC-01/AC-02 验收场景",
+      "title": "需求基线：画一朵康乃馨"
+    }
+  ],
+  "verification": [
+    {
+      "checkId": "requirements-self-check",
+      "status": "passed"
+    }
+  ]
+}

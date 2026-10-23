@@ -1,0 +1,11 @@
+{
+  "workItemId": "wi-t1000360",
+  "applicationId": "application",
+  "workItemType": "initial-build",
+  "title": "画一朵康乃馨\n\n绘制一朵康乃馨。产出应为可查看的康乃馨图像（如 SVG 矢量图或代码绘制页面），呈现康乃馨的典型特征：扇形锯齿状重瓣花瓣、杯状花冠、直立茎与对生细叶；可按需选择粉色系等常规配色。",
+  "request": "画一朵康乃馨\n\n绘制一朵康乃馨。产出应为可查看的康乃馨图像（如 SVG 矢量图或代码绘制页面），呈现康乃馨的典型特征：扇形锯齿状重瓣花瓣、杯状花冠、直立茎与对生细叶；可按需选择粉色系等常规配色。",
+  "status": "active",
+  "specId": "general-application-development-spec",
+  "revision": 0,
+  "createdAt": "2026-10-23T07:36:07.603Z"
+}
