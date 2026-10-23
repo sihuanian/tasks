@@ -1,0 +1,11 @@
+{
+  "workItemId": "wi-t1000345",
+  "applicationId": "application",
+  "workItemType": "initial-build",
+  "title": "请在当前 Session 中完成这个 IssueTask，按指定的连续阶段范围执行：requirements。业务任务：画一朵向日葵。绘制一朵向日葵作为可视交付物。用图形方式呈现一朵完整的向日葵，包含花瓣、花盘（管状花）、茎和叶片等基本要素，成果需可在浏览器或图片查看器中直接打开查看。本任务不涉及具体业务系统集成，仅交付单朵向日葵的绘制结果。阶段进度和回执只作为本地执行事实保存。只有全部阶段成功后，才发布一组最终产物和一个最终 WorkItem 快照。不得执行此范围之外的阶段；完成 requirements 后停止。",
+  "request": "请在当前 Session 中完成这个 IssueTask，按指定的连续阶段范围执行：requirements。业务任务：画一朵向日葵。绘制一朵向日葵作为可视交付物。用图形方式呈现一朵完整的向日葵，包含花瓣、花盘（管状花）、茎和叶片等基本要素，成果需可在浏览器或图片查看器中直接打开查看。本任务不涉及具体业务系统集成，仅交付单朵向日葵的绘制结果。阶段进度和回执只作为本地执行事实保存。只有全部阶段成功后，才发布一组最终产物和一个最终 WorkItem 快照。不得执行此范围之外的阶段；完成 requirements 后停止。",
+  "status": "active",
+  "specId": "general-application-development-spec",
+  "revision": 0,
+  "createdAt": "2026-10-23T01:30:10.203Z"
+}

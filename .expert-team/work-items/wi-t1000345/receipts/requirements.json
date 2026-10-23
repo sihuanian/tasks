@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 2,
+  "receiptId": "requirements:1",
+  "receiptType": "requirements-baseline",
+  "specId": "general-application-development-spec",
+  "graphRevision": 5,
+  "actionId": "requirements",
+  "inputRevision": 0,
+  "stateVersion": 1,
+  "outcome": "passed",
+  "contentHash": "sha256:36a2f51c16c1a21871cc94158e6e5b8d4d34d893e5c45f671ac149e5a6b6a759",
+  "createdAt": "2026-10-23T01:31:28.423Z",
+  "timing": {
+    "startedAt": "2026-10-23T01:30:10.301Z",
+    "completedAt": "2026-10-23T01:31:28.423Z",
+    "durationMs": 78122
+  },
+  "artifacts": [
+    {
+      "path": "docs/wi-t1000345/requirements.md",
+      "bytes": 2446,
+      "sha256": "sha256:120fcf5f4b63212683657b982c33bfd9962ec3f62553f6575a93cdbb23ff5130",
+      "title": "需求基线：画一朵向日葵（wi-t1000345）"
+    }
+  ],
+  "verification": [
+    {
+      "checkId": "requirements:completion",
+      "status": "passed"
+    }
+  ]
+}
