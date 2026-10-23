@@ -1,0 +1,11 @@
+{
+  "workItemId": "wi-t1000346",
+  "applicationId": "application",
+  "workItemType": "initial-build",
+  "title": "画一朵牡丹\n\n创作一幅\"一朵牡丹\"的数字绘画作品：主体为一朵盛开的牡丹，需明确呈现牡丹的典型形态特征（层叠花瓣、饱满花头、枝叶衬托），产出可查看、可保存的数字图像文件（如 SVG 或位图）。",
+  "request": "画一朵牡丹\n\n创作一幅\"一朵牡丹\"的数字绘画作品：主体为一朵盛开的牡丹，需明确呈现牡丹的典型形态特征（层叠花瓣、饱满花头、枝叶衬托），产出可查看、可保存的数字图像文件（如 SVG 或位图）。",
+  "status": "active",
+  "specId": "general-application-development-spec",
+  "revision": 0,
+  "createdAt": "2026-10-23T02:34:42.453Z"
+}

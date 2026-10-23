@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 2,
+  "receiptId": "requirements:1",
+  "receiptType": "requirements-baseline",
+  "specId": "general-application-development-spec",
+  "graphRevision": 5,
+  "actionId": "requirements",
+  "inputRevision": 0,
+  "stateVersion": 1,
+  "outcome": "passed",
+  "contentHash": "sha256:64c924d10669b9a1d6103b86b1cea7df657efe2862bad7edca91939c953ced9e",
+  "createdAt": "2026-10-23T02:35:43.825Z",
+  "timing": {
+    "startedAt": "2026-10-23T02:34:42.561Z",
+    "completedAt": "2026-10-23T02:35:43.825Z",
+    "durationMs": 61264
+  },
+  "artifacts": [
+    {
+      "path": "docs/wi-t1000346/requirements.md",
+      "bytes": 4232,
+      "sha256": "sha256:cca9ffb409232b24e7fc3ec3754c97abf25c33477200ff26d1ff9cd5d63a0481",
+      "role": "requirements",
+      "purpose": "requirements 阶段交付的需求基线文档：目标、核心规则 R1-R4、最小充分验收标准 AC-01 及完成前自检记录",
+      "title": "“画一朵牡丹”需求基线"
+    }
+  ],
+  "verification": [
+    {
+      "checkId": "requirements-document-finalized",
+      "status": "passed"
+    },
+    {
+      "checkId": "AC-01",
+      "status": "not-run"
+    }
+  ]
+}
