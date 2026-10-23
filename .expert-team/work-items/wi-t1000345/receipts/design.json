@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 2,
+  "receiptId": "design:2",
+  "receiptType": "architecture-plan",
+  "specId": "general-application-development-spec",
+  "graphRevision": 5,
+  "actionId": "design",
+  "inputRevision": 1,
+  "stateVersion": 2,
+  "outcome": "passed",
+  "contentHash": "sha256:f3da626bcefa2266238363e9e42ad2d09403c7d7db79c4aa80cbbd195fd55e84",
+  "createdAt": "2026-10-23T01:34:21.704Z",
+  "timing": {
+    "startedAt": "2026-10-23T01:32:36.595Z",
+    "completedAt": "2026-10-23T01:34:21.703Z",
+    "durationMs": 105108
+  },
+  "artifacts": [
+    {
+      "path": "docs/wi-t1000345/architecture-baseline.md",
+      "bytes": 3614,
+      "sha256": "sha256:8fe9f8440b5e22ee2345d9b7f2264570d7216bbecc69310c4f13ac9a60e3ea92",
+      "title": "架构基线：画一朵向日葵（wi-t1000345）"
+    }
+  ],
+  "verification": [
+    {
+      "checkId": "design:completion",
+      "status": "passed"
+    },
+    {
+      "checkId": "design:application-route",
+      "status": "passed",
+      "applicationProfile": {
+        "applicationType": "simple-frontend",
+        "routeId": "compact",
+        "sha256": "sha256:6aec847563fc8244072a23baac0ac76d57e9b62fb33817a7c995174015a339cc",
+        "path": ".expert-team/work-items/wi-t1000345/spec-state.json#/applicationProfile"
+      }
+    }
+  ]
+}
