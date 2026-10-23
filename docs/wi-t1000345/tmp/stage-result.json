@@ -1,0 +1,13 @@
+{
+  "status": "completed",
+  "artifacts": [
+    { "path": "docs/wi-t1000345/sunflower.svg" }
+  ],
+  "verification": [
+    { "checkId": "IMPL-V1", "command": "xmllint --noout docs/wi-t1000345/sunflower.svg", "cwd": "workspace-root", "status": "passed", "exitCode": 0, "evidence": "SVG 良构 XML，无解析报错" },
+    { "checkId": "IMPL-V2", "command": "grep 结构计数：花瓣40/花籽110/环状小花30/花盘底盘1/叶2/茎1", "cwd": "workspace-root", "status": "passed", "exitCode": 0, "evidence": "四类要素图元齐备，计数与实现设计一致" },
+    { "checkId": "IMPL-V3", "command": "grep 外部资源引用检查", "cwd": "workspace-root", "status": "passed", "exitCode": 0, "evidence": "xlink:href 与 image 引用命中 0，单文件自包含" },
+    { "checkId": "IMPL-V4", "command": "qlmanage -t -s 640 渲染后图像目检", "cwd": "workspace-root", "status": "passed", "exitCode": 0, "evidence": "系统图片查看器渲染路径下四要素清晰可辨，无畸形或空白" },
+    { "checkId": "QA-BROWSER-AC01", "command": "浏览器/双击打开 sunflower.svg 肉眼验收", "cwd": "n/a", "status": "not-run", "evidence": "按团队边界归属 QA 阶段执行，不构成本阶段缺陷" }
+  ]
+}

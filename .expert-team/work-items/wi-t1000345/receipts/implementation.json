@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 2,
+  "receiptId": "implementation:3",
+  "receiptType": "implementation-report",
+  "specId": "general-application-development-spec",
+  "graphRevision": 5,
+  "actionId": "implementation",
+  "inputRevision": 2,
+  "stateVersion": 3,
+  "outcome": "passed",
+  "contentHash": "sha256:b292281920df4d6ac518cb56ac31299bac3f371e4cf2bd700ad0992c6ef7530d",
+  "createdAt": "2026-10-23T01:43:16.336Z",
+  "timing": {
+    "startedAt": "2026-10-23T01:35:17.453Z",
+    "completedAt": "2026-10-23T01:43:16.336Z",
+    "durationMs": 478883
+  },
+  "artifacts": [
+    {
+      "path": "docs/wi-t1000345/sunflower.svg",
+      "bytes": 22435,
+      "sha256": "sha256:06af181ecae7931614141a7f7fb0298848dc8d9b094929fa929515271ec4c889"
+    },
+    {
+      "path": "docs/wi-t1000345/implementation-report.md",
+      "bytes": 5311,
+      "sha256": "sha256:ee5eaab6111f4827608c61c47f1dc22741967c390bf73ea05dcd828c9fe68108",
+      "title": "实现报告：画一朵向日葵（wi-t1000345 · implementation）"
+    }
+  ],
+  "verification": [
+    {
+      "checkId": "IMPL-V1",
+      "command": "xmllint --noout docs/wi-t1000345/sunflower.svg",
+      "cwd": "workspace-root",
+      "status": "passed",
+      "exitCode": 0,
+      "evidence": "SVG 良构 XML，无解析报错"
+    },
+    {
+      "checkId": "IMPL-V2",
+      "command": "grep 结构计数：花瓣40/花籽110/环状小花30/花盘底盘1/叶2/茎1",
+      "cwd": "workspace-root",
+      "status": "passed",
+      "exitCode": 0,
+      "evidence": "四类要素图元齐备，计数与实现设计一致"
+    },
+    {
+      "checkId": "IMPL-V3",
+      "command": "grep 外部资源引用检查",
+      "cwd": "workspace-root",
+      "status": "passed",
+      "exitCode": 0,
+      "evidence": "xlink:href 与 image 引用命中 0，单文件自包含"
+    },
+    {
+      "checkId": "IMPL-V4",
+      "command": "qlmanage -t -s 640 渲染后图像目检",
+      "cwd": "workspace-root",
+      "status": "passed",
+      "exitCode": 0,
+      "evidence": "系统图片查看器渲染路径下四要素清晰可辨，无畸形或空白"
+    },
+    {
+      "checkId": "QA-BROWSER-AC01",
+      "command": "浏览器/双击打开 sunflower.svg 肉眼验收",
+      "cwd": "n/a",
+      "status": "not-run",
+      "evidence": "按团队边界归属 QA 阶段执行，不构成本阶段缺陷"
+    },
+    {
+      "checkId": "implementation:application-route",
+      "status": "passed",
+      "applicationProfile": {
+        "applicationType": "simple-frontend",
+        "routeId": "inline",
+        "sha256": "sha256:6aec847563fc8244072a23baac0ac76d57e9b62fb33817a7c995174015a339cc",
+        "path": ".expert-team/work-items/wi-t1000345/spec-state.json#/applicationProfile"
+      }
+    }
+  ]
+}
