@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 2,
+  "receiptId": "requirements:1",
+  "receiptType": "requirements-baseline",
+  "specId": "general-application-development-spec",
+  "graphRevision": 5,
+  "actionId": "requirements",
+  "inputRevision": 0,
+  "stateVersion": 1,
+  "outcome": "passed",
+  "contentHash": "sha256:dd48d0c717e590a93093011c97a2cad22b99a2444fd8e0b18954a8cad7464438",
+  "createdAt": "2026-10-23T08:26:19.717Z",
+  "timing": {
+    "startedAt": "2026-10-23T08:25:09.999Z",
+    "completedAt": "2026-10-23T08:26:19.717Z",
+    "durationMs": 69718
+  },
+  "artifacts": [
+    {
+      "path": "docs/wi-t1000361/requirements.md",
+      "bytes": 2047,
+      "sha256": "sha256:b8418326c71e60afa5f060a6626b381d4d59ed3101fecc9e19b6850e55ab62d1",
+      "role": "deliverable",
+      "purpose": "requirements 阶段交付：一朵月季应用的需求与验收基线",
+      "title": "需求：画一朵月季"
+    }
+  ],
+  "verification": [
+    {
+      "checkId": "requirements-authored",
+      "status": "passed",
+      "detail": "已按产品基线闭合规则生成 requirements.md，覆盖用户明确目标（渲染一朵月季）、核心行为与规则、一条最小充分 AC（AC-01），并区分用户明确提出/推荐基线/未规定事项。"
+    }
+  ]
+}
